@@ -1,0 +1,35 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <form [formGroup]="formAnimal" (ngSubmit)="onSubmit()">
+    <input type="text" value="" formControlName="id" hidden>
+    <div class="mb-3 mt-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="image" class="form-label">Image:</label>
+      <input type="file" class="form-control" (change)="submitAvatar($event)" id="image">
+      <img src="{{path}}" alt="">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="age" class="form-label">Age:</label>
+      <input type="text" formControlName="age" class="form-control" id="age" placeholder="Enter age">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="quantity" class="form-label">Quantity:</label>
+      <input type="text" formControlName="quantity" class="form-control" id="quantity" placeholder="Enter quantity">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="price" class="form-label">Price:</label>
+      <input type="text" formControlName="price" class="form-control" id="price" placeholder="Enter price">
+    </div>
+    <div class="mb-3 mt-3" formGroupName="species">
+      <label for="species" class="form-label">Species: </label>
+      <select class="form-select" formControlName="id" id="species">
+        <option *ngFor="let s of species" value="{{s.id}}">{{s.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a (click)="back()" class="btn btn-secondary">Back</a>
+  </form>
+</div>
